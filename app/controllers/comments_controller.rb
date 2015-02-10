@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -35,6 +35,11 @@ class CommentsController < ApplicationController
 
 
   def update
+ 
+  # @status = current_user.statuses.find(params[:id]) 
+  # if params[:status] && params[:status].has_keys(:user_id)
+  # params[:status].delete(:user_id) 
+  # end
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -61,6 +66,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content, :user_id)
+      params.require(:comment).permit(:content, :user_id, :song_id)
     end
 end
