@@ -13,6 +13,9 @@
     <a href="#" class='brand'>120BPM</a> 
     <ul class='nav'>
       <li><%= link_to "All Comments", comments_path %></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <li><%= link_to('Sign up', new_user_registration_path)  %></li>
+      <li><%= link_to('Sign in', new_user_session_path)  %></li>
 
 
     </ul>    
