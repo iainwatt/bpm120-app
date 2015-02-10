@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="row-fluid">
+  <div class="span12">
+
+    <div class="row-fluid">
+      <div class="span8">
+        <h1>All Songs</h1>
+        <table>
+          <tbody>
+            <% @songs.each do |song| %>
+            <div class='song_index'>
+             
+               <%= link_to song.title, song_path(song) %>
+               <%= song.artist %>
+               <%= song.length %>
+                <!-- <td> <#%= song.url %></td> -->
+              
+               <p><%= song.user_id %></p>
+               <span class='admin'>
+                <%= link_to 'Show', song %>
+                <%= link_to 'Edit', edit_song_path(song) %>
+                <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %>  
+              </span>
+              </div>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+      <div class="span2 offset2">
+        <h2>Friends</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Song', new_song_path %>

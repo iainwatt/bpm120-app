@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
+  resources :songs
+
   devise_for :users
   resources :comments
   
