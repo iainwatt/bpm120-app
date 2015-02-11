@@ -1,13 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-
+<div class="page-header">
+  <h1>All Songs</h1>
+  <%= link_to 'Upload Song', new_song_path, class: "btn btn-success" %>
+</div>
 
 <div class="row-fluid">
   <div class="span12">
 
     <div class="row-fluid">
       <div class="span8">
-        <h1>All Songs</h1>
+        
         <table>
           <tbody>
             <% @songs.each do |song| %>
@@ -38,4 +39,3 @@
 
 <br>
 
-<%= link_to 'New Song', new_song_path %>

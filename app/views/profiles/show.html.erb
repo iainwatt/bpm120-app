@@ -1,6 +1,7 @@
 
 <div class='page-header'>
   <h1><%= @user.full_name %></h1>
+  <%= link_to "Follow", new_user_follower_path(followerd_id: @user), class: 'btn' %>
 </div>
 
 
