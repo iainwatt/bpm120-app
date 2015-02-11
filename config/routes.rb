@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :comments
   resources :user_followers
+  resources :song_users
   
   
 
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
   root 'songs#index'
 
   get '/:id', to: 'profiles#show', as: 'profile'
+
+  post '/favourites', to: 'favourites#create'
+
   
 
 end

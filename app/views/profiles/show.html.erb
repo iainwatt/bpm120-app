@@ -5,39 +5,43 @@
 </div>
 
 
-<div class="container-fluid">
-  <div class="row-fluid">
+
+ <div class="row-fluid">
+  <div class="span12">
     <div class="span2">
       <img src="http://i.imgur.com/PIEmo2x.jpg"> 
-          
+      <%= image_tag @user.user_image.url  %>
+                   
     </div>
     <div class="span8">
-              <% if @songs  %>
-                <% @songs.each do |song| %>
-                <div class='well'>
-                  <%= song.artist %>  
-                    <hr />
-                  <%= link_to song.title, song_path(song) %>
-                </div>
-                 <% end %>
-                 <% end %>
-                 <% if @comments %>
-                <h3>Comments</h3>
-                 <% @comments.each do |comment|  %>
-                <div class='well'>
-                  <%= comment.content %>
-                  <hr />
-                  <%= link_to time_ago_in_words(comment.created_at), comment_path(comment) %>
-                  <% end  %>
-                  <% end %>
-                </div>  
-       <div class="span2">
-        <h2>Friends</h1>
-       </div>   
-    </div>    
+      <% if @songs  %>
+        <% @songs.each do |song| %>
+        <div class='well'>
+          <%= song.artist %>  
+            <hr />
+          <%= link_to song.title, song_path(song) %>
+        </div>
+         <% end %>
+         <% end %>
+         <% if @comments %>
+        <h3>Comments</h3>
+         <% @comments.each do |comment|  %>
+        <div class='well'>
+          <%= comment.content %>
+
+          <hr />
+          <%= link_to time_ago_in_words(comment.created_at), comment_path(comment) %>
+          </div>  
+          <% end  %>
+          <% end %>   
+    </div>  
+    <div class="span2">
+      <h2>Friends</h1>
+    </div>     
   </div>
 </div>
 
 
 
-                  \
+
+                  

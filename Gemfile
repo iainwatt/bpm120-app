@@ -10,7 +10,7 @@ gem 'rails_12factor'
 
 gem 'devise'
 gem 'simple_form'
-
+gem 'carrierwave', '0.9.0' 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

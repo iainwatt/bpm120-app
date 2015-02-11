@@ -5,13 +5,24 @@
 <%= @song.title %>  |
 <%= @song.length %>
   <hr />
-<%= link_to "Add Comment", new_comment_path, class: "btn btn-success"  %>
-</div>
-<div class='well'>
-<% @song.comments.each do |c| %>
-  <%= c.content %>
+<%#= link_to "Add Comment", new_comment_path, class: "btn btn-success"  %>
+<%#= link_to 'Fav', %>
+<%= simple_form_for(@favourite) do |f| %>
+<%= f.hidden_field :song_id, value: params[:id] %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.button :submit, class: "btn btn-success" %>
+
 <% end %>
+
+
 </div>
 <%= render partial: 'comments/form' %>
+<% @song.comments.each do |c| %>
+<div class='well'>
+  <%= c.content %>
+  </div>
+<% end %>
+
+
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>

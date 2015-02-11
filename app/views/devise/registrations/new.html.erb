@@ -1,21 +1,36 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
 
-   <%= f.input :first_name %>
-   <%= f.input :last_name %>
-   <%= f.input :profile_name %>
-   <%= f.input :email %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.input :password, autocomplete: "off" %>
+<%= f.text_field :first_name, :placeholder => "First Name" %>
+<%= f.text_field :last_name, :placeholder => "Surname" %>
+<%= f.text_field :profile_name, :placeholder => "Profile Name" %>
+<%= f.text_field :about, :placeholder => "About" %>
+<%= f.text_field :user_image, :placeholder => "Image" %>
+<%= f.text_field :email, :placeholder => "email" %>
+<%= f.text_field :password, :placeholder => "password", :autocomplete => :off %>
+<%= f.text_field :password_confirmation, :placeholder => "password", :autocomplete => :off %>
+<%= f.submit 'Sign Up' %>
 
-    <%= f.input :password_confirmation, autocomplete: "off" %>
-    <%= f.button :submit, "Sign up" %>
-  
 <% end %>
-
+  
 <%= render "devise/shared/links" %>
+
+
+ <%#= f.input :first_name %>
+   <%#= f.input :last_name %>
+   <%#= f.input :profile_name %>
+   <%#= f.input :about %>
+   <%#= f.input :user_image %>
+   <%#= f.input :email %>
+    <%# if @validatable %>
+    <!-- <em>(<%#= @minimum_password_length %> characters minimum)</em> -->
+  <!--   <%# end %><br /> -->
+    <%#= f.input :password, autocomplete: "off" %>
+
+    <%#= f.input :password_confirmation, autocomplete: "off" %>
+    <%#= f.button :submit, "Sign up" %>
+  
+<%# end %>

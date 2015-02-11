@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
-<%#= f.hidden_field :title, :value => "some value" %>
 
+<%= f.input :content, input_html: {class: "input-block-level"} %>
 
-<%= f.input :song_id, collection: Song.all, label_method: :title %>
-<%= f.input :content  %>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<%= f.hidden_field :song_id, value: params[:id] %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.button :submit, class: "btn btn-success" %>
+
 <% end %>
+
+

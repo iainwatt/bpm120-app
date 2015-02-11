@@ -9,6 +9,7 @@ class SongsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @favourite = Favourite.new
   end
 
 

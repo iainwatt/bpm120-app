@@ -5,20 +5,16 @@
 
 <div class="row-fluid">
   <div class="span12">
-
     <div class="row-fluid">
-      <div class="span8">
-        
+      <div class="span8">        
         <table>
           <tbody>
             <% @songs.each do |song| %>
-            <div class='song_index'>
-             
+            <div class='song_index'>            
                <%= link_to song.title, song_path(song) %>
                <%= song.artist %>
                <%= song.length %>
-                <!-- <td> <#%= song.url %></td> -->
-              
+                <!-- <td> <#%= song.url %></td> -->              
                <p><%= song.user.full_name %></p>
                <span class='admin'>
                 <%= link_to 'Show', song %>
@@ -27,11 +23,11 @@
               </span>
               </div>
                 <% end %>
-              </tbody>
-            </table>
-        </div>
-      <div class="span2 offset2">
-        <h2>Friends</h1>
+          </tbody>
+        </table>
+          </div>
+            <div class="span2 offset2">
+          <h2>Friends</h1>
       </div>
     </div>
   </div>
