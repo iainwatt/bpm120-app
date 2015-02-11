@@ -9,7 +9,7 @@
  <div class="row-fluid">
   <div class="span12">
     <div class="span2">
-      <img src="http://i.imgur.com/PIEmo2x.jpg"> 
+  
       <%= image_tag @user.user_image.url  %>
                    
     </div>
@@ -18,6 +18,8 @@
         <% @songs.each do |song| %>
         <div class='well'>
           <%= song.artist %>  
+            <hr />
+            <%= audio_tag song.sound_file, autoplay: false, controls: true  %>
             <hr />
           <%= link_to song.title, song_path(song) %>
         </div>
@@ -28,7 +30,7 @@
          <% @comments.each do |comment|  %>
         <div class='well'>
           <%= comment.content %>
-
+        
           <hr />
           <%= link_to time_ago_in_words(comment.created_at), comment_path(comment) %>
           </div>  

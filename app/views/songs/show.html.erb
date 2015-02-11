@@ -1,9 +1,13 @@
 <div class='well'>
+   <%= image_tag @song.song_image.url %>
   
+    <!-- <img src="http://i.imgur.com/PIEmo2x.jpg"> -->
 <%= @song.artist %>  
   <hr />
-<%= @song.title %>  |
-<%= @song.length %>
+
+<%= audio_tag @song.sound_file, autoplay: false, controls: true  %>
+<strong><%= @song.title %></strong>  
+<%= @song.artist %>
   <hr />
 <%#= link_to "Add Comment", new_comment_path, class: "btn btn-success"  %>
 <%#= link_to 'Fav', %>
@@ -19,10 +23,14 @@
 <%= render partial: 'comments/form' %>
 <% @song.comments.each do |c| %>
 <div class='well'>
+  <%= @song.user.user_image %>
+  <%= @song.user.full_name %> | 
   <%= c.content %>
+  
   </div>
+
 <% end %>
 
-
+<%= image_tag @song.song_image %>
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
