@@ -6,7 +6,7 @@ gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'devise'
 gem 'simple_form'
