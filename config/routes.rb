@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
   resources :songs
 
   devise_for :users
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
   get 'feed', to: 'comments#index', as: :feed
   root 'songs#index'
 
-  get '/:id', to: 'profiles#show', as: 'profile'
+  get '/profile/:id', to: 'profiles#show', as: 'profile'
 
   post '/favourites', to: 'favourites#create'
 
