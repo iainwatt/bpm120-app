@@ -1,7 +1,16 @@
 
 <div class='page-header'>
   <h1><%= @user.full_name %></h1>
-  <%= link_to "Follow", new_user_follower_path(followerd_id: @user), class: 'btn' %>
+  
+
+<%  if @user.id != current_user.id %>
+<%#= simple_form_for(@user_follower) do |f| %>
+<%#= f.hidden_field :follower_id, value: params[:id] or f.id %>
+<%#= f.hidden_field :user_id, value: current_user.id %>
+<%#= f.button :submit, class: "btn btn-success" %>
+<%= link_to "Follow", new_user_follower_path(followerd_id: @user), class: 'btn' %>
+<% end %>
+<%# end %>
 </div>
 
 
@@ -26,6 +35,13 @@
          <% end %>
          <% end %>
          <% if @comments %>
+        
+        <h3>Favourites</h3>
+        <% @user.favourites.each do |d|  %>
+        <p><%= d.song.title  %></p>
+        <% end  %>
+
+
         <h3>Comments</h3>
          <% @comments.each do |comment|  %>
         <div class='well'>

@@ -5,11 +5,11 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = Favourite.create(favourtie_params)
+    @favourite = Favourite.create(favourite_params)
 
     respond_to do |format|
       if @favourite.save
-        format.html { redirect_to current_user.profile_name, notice: 'Song added to favourites' }
+        format.html { redirect_to song_path(@favourite.song_id), notice: 'Song added to favourites' }
         format.json { render :show, status: :created, location: @favourite }
       else
         format.html { render :new }
@@ -18,7 +18,7 @@ class FavouritesController < ApplicationController
    end
  end
 
-  def favourtie_params
+  def favourite_params
     params.require(:favourite).permit(:user_id, :song_id)
   end
 

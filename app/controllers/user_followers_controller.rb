@@ -1,29 +1,23 @@
 class UserFollowersController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
+
   def new
     if params[:follower_id]
-      @follower = User.where(profile_name: params[:friend_id]).first
-      raise ActiveRecord::RecordNotFound if @friend.nil?
-      @user_follower = current_user.user_followers.new[folower: @friend] 
-    else
-      flash[:error] = "Friend required"
-   end
-   rescue ActiveRecord::RecordNotFound
-    render file: 'public/404', status: :not_found
+      @follower = User.where(profile_name: params[:follower_id]).first      
+      @user_follower = current_user.user_followers.new[folower: @follower] 
+   end   
   end
 
   def create
     if params[:follower_id]
-      @follower = User.where(profile_name: params[:friend_id]).first
-      @user_follower = current_user.user_followers.new[folower: @friend] 
-      @user_follower.save
-      flash[:success] = "You are now following #{@follower.full_name}"
-      redirect_to profile_path(@follower)
-    else
-      flash[:error] = "friend required"
+      @follower = User.where(profile_name: params[:follower_id]).first
+      @user_follower = current_user.user_followers.new[folower: @follower] 
       redirect_to root_path
     end
   end
-# attr_accessible :user, :follower, :user_ud, :friend_id These need to go in strong params
+
+  def user_follower_params
+  params.require(:user_follower).permit(:user_id, :follower_id)  
+# attr_accessible :user, :follower??
 end
