@@ -13,8 +13,7 @@
             <div class='song_index'>            
                <%= link_to song.title, song_path(song) %>
                <%= song.artist %>
-               <%= song.length %>
-               person             
+               <%= song.length %>          
                <%= link_to(song.user.full_name, profile_path(song.user.id)) %>
                <span class='admin'>
                 <%= link_to 'Show', song %>

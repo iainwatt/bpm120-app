@@ -21,10 +21,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to song_path(@comment.song_id), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -35,11 +34,6 @@ class CommentsController < ApplicationController
 
 
   def update
- 
-  # @status = current_user.statuses.find(params[:id]) 
-  # if params[:status] && params[:status].has_keys(:user_id)
-  # params[:status].delete(:user_id) 
-  # end
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }

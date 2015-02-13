@@ -1,0 +1,4 @@
+HTML5 Player Code
+var v = document.getElementsByTagName("video")[0];
+v.addEventListener("seeked", function() { document.getElementsByTagName("video")[0].play(); }, true);
+v.currentTime = 10.0;

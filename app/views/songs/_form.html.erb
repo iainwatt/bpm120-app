@@ -1,26 +1,16 @@
 <%= simple_form_for(@song) do |f| %>
   <%= f.error_notification %>
-
   <div class="form-inputs">
-
-  <%= f.text_field :title, :placeholder => "Title" %>
-  <%= f.text_field :artist, :placeholder => "Artist" %>
-  <%= f.label :sound_file %>
-  <%= f.file_field :sound_file, :placeholder => "Upload Song" %>
-  <%= f.label :sound_image %>
-  <%= f.file_field :song_image, :placeholder => "Upload Image" %>
-
-   
+    <%= f.text_field :title, :placeholder => "Title" %>
+    <%= f.text_field :artist, :placeholder => "Artist" %>
+    <%= f.label :sound_file %>
+    <%= f.file_field :sound_file, :placeholder => "Upload Song" %>
+    <%= f.label :sound_image %>
+    <%= f.file_field :song_image, :placeholder => "Upload Image" %>   
   </div>
-
   <div class="form-actions">
    <%= f.submit 'Upload' %>
   </div>
+  <% end  %>
 
-<% end  %>
-
-    <%#= f.input :title %>
-    <%#= f.input :artist %>
-    <%#= f.input :length %>
-    <%#= f.input :url %>
-  
+    

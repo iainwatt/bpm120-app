@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211182301) do
+ActiveRecord::Schema.define(version: 20150212202129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20150211182301) do
   add_index "favourites", ["song_id"], name: "index_favourites_on_song_id", using: :btree
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
+  create_table "followers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "song_users", force: :cascade do |t|
     t.integer  "song_id"
     t.integer  "user_id"
@@ -49,10 +56,10 @@ ActiveRecord::Schema.define(version: 20150211182301) do
     t.decimal  "length"
     t.string   "url"
     t.integer  "user_id"
+    t.text     "song_image"
+    t.text     "sound_file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "sound_file"
-    t.string   "song_image"
   end
 
   create_table "user_followers", force: :cascade do |t|
@@ -81,8 +88,6 @@ ActiveRecord::Schema.define(version: 20150211182301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "about"
-    t.string   "image"
-    t.string   "avatar"
     t.string   "user_image"
   end
 

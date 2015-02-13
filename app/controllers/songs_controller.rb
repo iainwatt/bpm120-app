@@ -1,17 +1,14 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @songs = Song.all
   end
-
 
   def show
     @comment = Comment.new
     @favourite = Favourite.new
   end
-
 
   def new
     @song = Song.new
@@ -22,8 +19,6 @@ class SongsController < ApplicationController
 
   def create
     @song = current_user.songs.new(song_params)
-    
-
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
@@ -48,7 +43,6 @@ class SongsController < ApplicationController
     end
   end
 
-
   def destroy
     @song.destroy
     respond_to do |format|
@@ -58,11 +52,9 @@ class SongsController < ApplicationController
   end
 
   private
-
     def set_song
       @song = Song.find(params[:id])
     end
-
 
     def song_params
       params.require(:song).permit(:title, :artist, :length, :url, :user_id, :sound_file, :song_image)

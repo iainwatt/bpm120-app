@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
   resources :songs
-
   devise_for :users
   resources :comments
-  resources :user_followers
   resources :song_users
+  resources :followers
   
-  
-
-
   devise_scope :user do 
     get 'register', to: 'devise/registrations#new', as: :register
     get 'login', to: 'devise/sessions#new', as: :login
@@ -20,7 +16,6 @@ Rails.application.routes.draw do
   root 'songs#index'
 
   get '/profile/:id', to: 'profiles#show', as: 'profile'
-
   post '/favourites', to: 'favourites#create'
 
   

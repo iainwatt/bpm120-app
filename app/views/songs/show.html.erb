@@ -1,36 +1,30 @@
+<div class='page-header'>
+  <h2><%= @song.artist %>  | <%= @song.title %></h2>
+</div>
+
 <div class='well'>
-   <%= image_tag @song.song_image.url %>
+ <%= image_tag @song.song_image.url, class: 'song_image' %>
+ <%= audio_tag @song.sound_file, autoplay: false, controls: true  %>
+ <strong><%= @song.title %></strong>  
+ <%= @song.artist %>
+</div>
+<div class='well button-well'>
+  <%= simple_form_for(@favourite) do |f| %>
+  <%= f.hidden_field :song_id, value: params[:id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Like", class: "btn btn-success" %> 
+  <% end %>
   
-    <!-- <img src="http://i.imgur.com/PIEmo2x.jpg"> -->
-<%= @song.artist %>  
-  <hr />
-
-<%= audio_tag @song.sound_file, autoplay: false, controls: true  %>
-<strong><%= @song.title %></strong>  
-<%= @song.artist %>
-  <hr />
-<%#= link_to "Add Comment", new_comment_path, class: "btn btn-success"  %>
-<%#= link_to 'Fav', %>
-<%= simple_form_for(@favourite) do |f| %>
-<%= f.hidden_field :song_id, value: params[:id] %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.button :submit, class: "btn btn-success" %>
-
-<% end %>
-
-
+  <p>Likes: <%= @song.favourites.count %> </p>
 </div>
 <%= render partial: 'comments/form' %>
 <% @song.comments.each do |c| %>
 <div class='well'>
-  <%= @song.user.user_image %>
-  <%= @song.user.full_name %> | 
-  <%= c.content %>
-  
-  </div>
-
+  <%= image_tag c.user.user_image, class: 'comment_image' %>
+  <%= c.user.full_name %> | 
+  <%= c.content %>  
+</div>
 <% end %>
-
-<%= image_tag @song.song_image %>
+<%#= image_tag @song.song_image %>
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
