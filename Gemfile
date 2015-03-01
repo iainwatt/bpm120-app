@@ -14,6 +14,7 @@ gem 'carrierwave', '0.9.0'
 gem 'soundmanager-rails'
 gem 'soundmanager2-rails'
 gem 'fog'
+gem 'state_machine'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

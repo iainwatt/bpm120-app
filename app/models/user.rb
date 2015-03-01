@@ -2,8 +2,15 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :songs
   has_many :followers
-  has_many :friends, through: :followers
   has_many :favourites
+  has_many :friends, through: :followers
+  					# conditions: { follower: {state: 'accepted'}}
+
+  # has_many :pending_followers/or friends?? , class_name: 'Follower',
+  																						foreign_key: :user_id,
+  																						conditions: { state: 'pending'}
+  has_many :pending_friends, through: :pending_followers, source: :friend																						
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
