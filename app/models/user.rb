@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :songs
   has_many :followers
   has_many :favourites
-  has_many :friends, through: :followers
+  has_many :friends, through: :followers,
   					# conditions: { follower: {state: 'accepted'}}
 
   # has_many :pending_followers/or friends?? , class_name: 'Follower',
